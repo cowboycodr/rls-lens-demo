@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy RLS Lens</title>
+    <meta name="description" content="Buy the local RLS Lens Supabase RLS debugger download.">
+    <link rel="stylesheet" href="./landing.css">
+    <style>
+      main { min-height: calc(100vh - 65px); display: grid; place-items: center; padding: 32px 20px; }
+      .buy-panel { width: min(840px, 100%); border: 1px solid var(--line); border-radius: 8px; padding: 32px; background: #fff; box-shadow: 0 18px 50px rgba(21, 38, 31, 0.08); }
+      .buy-panel h1 { margin: 0 0 12px; font-size: clamp(40px, 8vw, 76px); letter-spacing: 0; }
+      .buy-panel p { color: var(--muted); line-height: 1.55; }
+      .price-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin: 18px 0; }
+      .price { font-size: 34px; font-weight: 900; color: var(--ink); }
+      .pill { border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; color: var(--muted); font-weight: 800; }
+      .buy-list { display: grid; gap: 10px; margin: 24px 0; padding: 0; list-style: none; }
+      .buy-list li { padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-soft); }
+      .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 24px 0; }
+      .step { border: 1px solid var(--line); border-radius: 7px; padding: 14px; background: #f9fbfa; }
+      .step strong { display: block; margin-bottom: 6px; }
+      .step span { color: var(--muted); font-size: 14px; line-height: 1.4; }
+      .hash { overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+      .cta-row { margin-top: 24px; }
+      .small-note { font-size: 14px; }
+      @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="./landing.html">RLS Lens</a>
+      <nav>
+        <a href="./index.html">Demo</a>
+        <a href="./sample-report.md">Sample report</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="buy-panel" aria-label="Buy RLS Lens">
+        <p class="eyebrow">Manual checkout</p>
+        <h1>Buy RLS Lens</h1>
+        <p>Local download for debugging Supabase RLS policies in your browser. No account, upload, project connection, or API key.</p>
+        <div class="price-row">
+          <span class="price">$19</span>
+          <span class="pill">local HTML/CSS/JS download</span>
+          <span class="pill">redacted support bundle included</span>
+        </div>
+        <div class="steps" aria-label="Manual purchase steps">
+          <div class="step"><strong>1. Request</strong><span>Click below to send a purchase email with the package checksum and attribution.</span></div>
+          <div class="step"><strong>2. Pay</strong><span>I reply with a payment link while hosted checkout is being wired.</span></div>
+          <div class="step"><strong>3. Download</strong><span>After payment, I send the zip and checksum. Open index.html locally.</span></div>
+        </div>
+        <ul class="buy-list">
+          <li>Static HTML/CSS/JS app for local use</li>
+          <li>Policy matrix, grant checks, insert owner-column warnings, index warnings, SQL diagnostic export, Markdown report, and redacted support bundle</li>
+          <li>Refund line: if it cannot explain one real redacted policy within 7 days, ask for a refund</li>
+          <li>First buyers can send one redacted support bundle for a second pass on confusing results</li>
+        </ul>
+        <p>Hosted card checkout is being wired. For now, purchase is manual: send a request and I will reply with a payment link, then deliver the zip after payment.</p>
+        <p class="hash">Package SHA-256: c90ebfd44e172f416550e991718bb9a938a0006ffd4ea8e49067dd709c174b8b</p>
+        <div class="cta-row">
+          <a id="purchase-link" class="button primary" href="mailto:kian.p.m.007@gmail.com?subject=Buy%20RLS%20Lens%20local%20download&body=I%20want%20to%20buy%20RLS%20Lens%20for%20%2419.%0A%0APackage%20SHA-256%3A%20c90ebfd44e172f416550e991718bb9a938a0006ffd4ea8e49067dd709c174b8b%0ADemo%20URL%3A%20https%3A%2F%2Fcowboycodr.github.io%2Frls-lens-demo%2F%0A%0APlease%20send%20a%20payment%20link%20and%20the%20download%20after%20payment.">Request purchase link</a>
+          <a class="button secondary" href="./index.html">Try demo first</a>
+        </div>
+        <p class="small-note">If the email button does not open, send the request manually to kian.p.m.007@gmail.com with subject "Buy RLS Lens local download".</p>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const link = document.getElementById("purchase-link");
+        const params = new URLSearchParams(window.location.search);
+        const sourceLines = [];
+        for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) {
+          if (params.has(key)) sourceLines.push(`${key}: ${params.get(key)}`);
+        }
+        const attribution = [
+          "",
+          "Purchase page: " + window.location.href,
+          ...sourceLines,
+        ].join("\n");
+        const body = "I want to buy RLS Lens for $19.\n\nPackage SHA-256: c90ebfd44e172f416550e991718bb9a938a0006ffd4ea8e49067dd709c174b8b\nDemo URL: https://cowboycodr.github.io/rls-lens-demo/\n\nPlease send a payment link and the download after payment." + attribution;
+        link.href = "mailto:kian.p.m.007@gmail.com?subject=" + encodeURIComponent("Buy RLS Lens local download") + "&body=" + encodeURIComponent(body);
+      })();
+    </script>
+  </body>
+</html>
