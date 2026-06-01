@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy RLS Lens</title>
+    <meta name="description" content="Buy the local RLS Lens Supabase RLS debugger download.">
+    <link rel="stylesheet" href="./landing.css">
+    <style>
+      main { min-height: calc(100vh - 65px); display: grid; place-items: center; padding: 32px 20px; }
+      .buy-panel { width: min(760px, 100%); border: 1px solid var(--line); border-radius: 8px; padding: 32px; background: #fff; box-shadow: 0 18px 50px rgba(21, 38, 31, 0.08); }
+      .buy-panel h1 { margin: 0 0 12px; font-size: clamp(40px, 8vw, 76px); letter-spacing: 0; }
+      .buy-panel p { color: var(--muted); line-height: 1.55; }
+      .buy-list { display: grid; gap: 10px; margin: 24px 0; padding: 0; list-style: none; }
+      .buy-list li { padding: 12px 14px; border: 1px solid var(--line); border-radius: 7px; background: var(--panel-soft); }
+      .hash { overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }
+      .cta-row { margin-top: 24px; }
+    </style>
+  </head>
+  <body>
+    <header class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="./landing.html">RLS Lens</a>
+      <nav>
+        <a href="./index.html">Demo</a>
+        <a href="./sample-report.md">Sample report</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="buy-panel" aria-label="Buy RLS Lens">
+        <p class="eyebrow">Manual checkout</p>
+        <h1>Buy RLS Lens</h1>
+        <p>$19 local download for debugging Supabase RLS policies in your browser. No account, upload, project connection, or API key.</p>
+        <ul class="buy-list">
+          <li>Static HTML/CSS/JS app for local use</li>
+          <li>Policy matrix, grant checks, index warnings, SQL diagnostic export, Markdown report, and redacted support bundle</li>
+          <li>Refund line: if it cannot explain one real redacted policy within 7 days, ask for a refund</li>
+        </ul>
+        <p>Hosted card checkout is being wired. For now, send a purchase request and I will reply with a payment link, then deliver the zip after payment.</p>
+        <p class="hash">Package SHA-256: 50398a434c84f7131200bd597af35772ffcb1a2d9458a2e73c490b90b7c12523</p>
+        <div class="cta-row">
+          <a id="purchase-link" class="button primary" href="mailto:kian.p.m.007@gmail.com?subject=Buy%20RLS%20Lens%20local%20download&body=I%20want%20to%20buy%20RLS%20Lens%20for%20%2419.%0A%0APackage%20SHA-256%3A%2050398a434c84f7131200bd597af35772ffcb1a2d9458a2e73c490b90b7c12523%0ADemo%20URL%3A%20https%3A%2F%2Fcowboycodr.github.io%2Frls-lens-demo%2F%0A%0APlease%20send%20a%20payment%20link%20and%20the%20download%20after%20payment.">Request purchase link</a>
+          <a class="button secondary" href="./index.html">Try demo first</a>
+        </div>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const link = document.getElementById("purchase-link");
+        const params = new URLSearchParams(window.location.search);
+        const sourceLines = [];
+        for (const key of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) {
+          if (params.has(key)) sourceLines.push(`${key}: ${params.get(key)}`);
+        }
+        const attribution = [
+          "",
+          "Purchase page: " + window.location.href,
+          ...sourceLines,
+        ].join("\n");
+        const body = "I want to buy RLS Lens for $19.\n\nPackage SHA-256: 50398a434c84f7131200bd597af35772ffcb1a2d9458a2e73c490b90b7c12523\nDemo URL: https://cowboycodr.github.io/rls-lens-demo/\n\nPlease send a payment link and the download after payment." + attribution;
+        link.href = "mailto:kian.p.m.007@gmail.com?subject=" + encodeURIComponent("Buy RLS Lens local download") + "&body=" + encodeURIComponent(body);
+      })();
+    </script>
+  </body>
+</html>
