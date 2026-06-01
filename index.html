@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RLS Lens</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Browser-local Supabase RLS simulator</p>
+          <h1>RLS Lens</h1>
+        </div>
+        <div class="action-row">
+          <button id="import-sql" class="button secondary" type="button">Import SQL</button>
+          <input id="migration-files" type="file" accept=".sql,.txt" multiple hidden>
+          <button id="load-demo" class="button secondary" type="button">Demo</button>
+          <button id="analyze" class="button primary" type="button">Analyze</button>
+          <button id="support-bundle" class="button secondary" type="button">Support</button>
+          <button id="download-sql" class="button secondary" type="button">SQL File</button>
+          <button id="export-report" class="button secondary" type="button">Export</button>
+        </div>
+      </header>
+
+      <section class="workbench" aria-label="RLS debugger workbench">
+        <form class="input-pane" id="rls-form">
+          <div class="field-grid compact-grid">
+            <label>
+              <span>Operation</span>
+              <select id="operation">
+                <option value="select">select</option>
+                <option value="insert">insert</option>
+                <option value="update">update</option>
+                <option value="delete">delete</option>
+              </select>
+            </label>
+            <label>
+              <span>Role</span>
+              <select id="role">
+                <option value="authenticated">authenticated</option>
+                <option value="anon">anon</option>
+                <option value="service_role">service_role</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="preset-row" aria-label="Scenario presets">
+            <button class="preset-button active" type="button" data-scenario="owner">Owner</button>
+            <button class="preset-button" type="button" data-scenario="anon">Anon</button>
+            <button class="preset-button" type="button" data-scenario="other-user">Other user</button>
+            <button class="preset-button" type="button" data-scenario="service">Service</button>
+          </div>
+
+          <div class="saved-scenario-row" aria-label="Saved scenarios">
+            <label class="scenario-name-field">
+              <span>Saved scenario</span>
+              <input id="scenario-name" autocomplete="off" spellcheck="false" placeholder="Team admin JWT">
+            </label>
+            <label>
+              <span>Load</span>
+              <select id="saved-scenarios">
+                <option value="">No saved scenarios</option>
+              </select>
+            </label>
+            <button id="save-scenario" class="button secondary" type="button">Save</button>
+            <button id="load-scenario" class="button secondary" type="button">Load</button>
+            <button id="delete-scenario" class="button secondary" type="button">Delete</button>
+          </div>
+
+          <div id="file-status" class="file-status" aria-live="polite"></div>
+
+          <div class="field-grid compact-grid">
+            <label>
+              <span>Target table</span>
+              <input id="target-table" autocomplete="off" spellcheck="false" placeholder="public.todos">
+            </label>
+            <label>
+              <span>auth.uid()</span>
+              <input id="uid" autocomplete="off" spellcheck="false" placeholder="00000000-0000-0000-0000-000000000000">
+            </label>
+          </div>
+
+          <label>
+            <span>Schema and policies</span>
+            <textarea id="sql-input" spellcheck="false"></textarea>
+          </label>
+
+          <div class="field-grid">
+            <label>
+              <span>Existing rows JSON</span>
+              <textarea id="rows-input" spellcheck="false"></textarea>
+            </label>
+            <label>
+              <span>New row JSON</span>
+              <textarea id="new-row-input" spellcheck="false"></textarea>
+            </label>
+          </div>
+
+          <label>
+            <span>JWT claims JSON</span>
+            <textarea id="jwt-input" spellcheck="false"></textarea>
+          </label>
+        </form>
+
+        <section class="report-pane" aria-live="polite">
+          <div class="report-header">
+            <div>
+              <p class="eyebrow">Report</p>
+              <h2 id="report-title">Run an analysis</h2>
+            </div>
+            <span id="report-badge" class="status-pill neutral">Ready</span>
+          </div>
+
+          <div class="metric-grid" id="metrics"></div>
+
+          <div class="tabs" role="tablist" aria-label="Report sections">
+            <button class="tab active" type="button" data-tab="matrix">Matrix</button>
+            <button class="tab" type="button" data-tab="policies">Policies</button>
+            <button class="tab" type="button" data-tab="fixes">Fixes</button>
+            <button class="tab" type="button" data-tab="sql">SQL</button>
+          </div>
+
+          <div id="panel-matrix" class="panel active"></div>
+          <div id="panel-policies" class="panel"></div>
+          <div id="panel-fixes" class="panel"></div>
+          <div id="panel-sql" class="panel"></div>
+        </section>
+      </section>
+    </main>
+
+    <script>window.RLS_LENS_CONFIG = {"mode":"public-demo","checkoutUrl":"./buy.html"};</script>
+    <script src="./app.js?v=111dad4a6e91"></script>
+  </body>
+</html>
