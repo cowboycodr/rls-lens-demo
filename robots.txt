@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cowboycodr.github.io/rls-lens-demo/sitemap.xml
