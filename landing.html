@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RLS Lens - Supabase RLS Debugger</title>
+    <meta
+      name="description"
+      content="Paste Supabase RLS policies and sample rows. See which rows are invisible, which policy blocked them, and what SQL test to run next."
+    >
+    <link rel="stylesheet" href="./landing.css">
+  
+    <link rel="canonical" href="https://cowboycodr.github.io/rls-lens-demo/landing.html">
+    <meta property="og:title" content="RLS Lens - Supabase RLS Debugger">
+    <meta property="og:description" content="Browser-local Supabase RLS debugger. Paste policies and sample rows to see allowed rows, blocked policies, grants, index warnings, and SQL diagnostics.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cowboycodr.github.io/rls-lens-demo/landing.html">
+    <meta property="og:image" content="https://cowboycodr.github.io/rls-lens-demo/assets/app-matrix.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RLS Lens - Supabase RLS Debugger">
+    <meta name="twitter:description" content="Browser-local Supabase RLS debugger. Paste policies and sample rows to see allowed rows, blocked policies, grants, index warnings, and SQL diagnostics.">
+    <meta name="twitter:image" content="https://cowboycodr.github.io/rls-lens-demo/assets/app-matrix.png">
+  </head>
+  <body>
+    <header class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="./landing.html">RLS Lens</a>
+      <nav>
+        <a href="./index.html">Demo</a>
+        <a href="./sample-report.md">Sample report</a>
+        <a class="buy-link" href="./buy.html">Buy download</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="RLS Lens product preview">
+        <iframe class="hero-preview" src="./index.html?scenario=missing-owner-insert" title="RLS Lens live preview" tabindex="-1"></iframe>
+        <div class="hero-copy">
+          <p class="eyebrow">Browser-local Supabase RLS debugger</p>
+          <h1>RLS Lens</h1>
+          <p class="lede">
+            Stop guessing why Supabase returned an empty array. Paste your policies, role, JWT claims, and sample rows to get a row-by-row allowed/denied matrix.
+          </p>
+          <div class="cta-row">
+            <a class="button primary" href="./index.html?scenario=missing-owner-insert">Try the owner-column demo</a>
+            <a class="button secondary" href="./buy.html">Buy local download</a>
+          </div>
+          <p class="privacy-note">Public demo uses sample data. Paid download runs locally with your own migrations and rows.</p>
+        </div>
+      </section>
+
+      <section class="proof-band" aria-label="What RLS Lens catches">
+        <div class="proof-item">
+          <span>01</span>
+          <strong>Invisible rows</strong>
+          <p>See exactly which sample rows fail `USING` for anon, owner, other-user, and service-role scenarios.</p>
+        </div>
+        <div class="proof-item">
+          <span>02</span>
+          <strong>Broken writes</strong>
+          <p>Check `WITH CHECK` for inserts, updates, and upserts that unexpectedly take the UPDATE path.</p>
+        </div>
+        <div class="proof-item">
+          <span>03</span>
+          <strong>Missing grants</strong>
+          <p>Catch the common case where a policy exists but the role lacks the matching table privilege.</p>
+        </div>
+      </section>
+
+      <section class="content-section" aria-label="Product details">
+        <div class="section-heading">
+          <p class="eyebrow">What ships in the zip</p>
+          <h2>A focused diagnostic tool, not another dashboard</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>Import migration SQL</h3>
+            <p>Load one or more `.sql` files from a Supabase repo and parse policies, RLS enablement, grants, and owner-column indexes.</p>
+          </div>
+          <div class="feature">
+            <h3>Switch request context</h3>
+            <p>Use presets for owner, anon, other user, and service role, or save custom JWT/sample-row scenarios locally.</p>
+          </div>
+          <div class="feature">
+            <h3>Export a report</h3>
+            <p>Save a Markdown report with the matrix, warnings, parsed policies, parsed grants, and SQL smoke-test stub.</p>
+          </div>
+          <div class="feature">
+            <h3>Run a SQL diagnostic</h3>
+            <p>Download a rollback-wrapped script for the Supabase SQL editor with role, JWT claims, privilege check, and a sample operation probe.</p>
+          </div>
+          <div class="feature">
+            <h3>Catch index gaps</h3>
+            <p>Warn when an `auth.uid()` ownership policy points at a column with no parsed index in the imported SQL.</p>
+          </div>
+          <div class="feature">
+            <h3>Send a redacted bundle</h3>
+            <p>Download a support file that removes common UUIDs, emails, JWTs, and obvious secret fields before asking for help.</p>
+          </div>
+          <div class="feature">
+            <h3>Keep data local</h3>
+            <p>The app is static HTML/CSS/JS. Your schema and rows stay in your browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="checkout-section" aria-label="Checkout copy">
+        <div>
+          <p class="eyebrow">Suggested launch offer</p>
+          <h2>$19 local download or $49 unblock pass</h2>
+          <p>
+            Manual checkout is active while hosted payments are being wired. Request the local download or unblock pass and get delivery after payment.
+          </p>
+        </div>
+        <a class="button primary" href="./buy.html">Buy the package</a>
+      </section>
+    </main>
+    <script>
+      (() => {
+        const incoming = new URLSearchParams(window.location.search);
+        const trackedKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content"];
+        const tracked = trackedKeys.filter((key) => incoming.has(key));
+        if (!tracked.length) return;
+
+        document.querySelectorAll('a[href^="./index.html"], a[href^="./buy.html"], a[href^="./buy.html"]').forEach((link) => {
+          const url = new URL(link.getAttribute("href"), window.location.href);
+          for (const key of tracked) url.searchParams.set(key, incoming.get(key));
+          link.href = `${url.pathname.split("/").pop()}${url.search}`;
+        });
+
+        const preview = document.querySelector(".hero-preview");
+        if (preview) {
+          const url = new URL(preview.getAttribute("src"), window.location.href);
+          for (const key of tracked) url.searchParams.set(key, incoming.get(key));
+          preview.src = `${url.pathname.split("/").pop()}${url.search}`;
+        }
+      })();
+    </script>
+  </body>
+</html>
